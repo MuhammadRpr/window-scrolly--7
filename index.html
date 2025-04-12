@@ -1,133 +1,177 @@
 <html>
 <head>
-    <title>My Website</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <title>Spelling School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
     <style>
         body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-        }
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-            padding: 20px 10px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        .navbar.scrolled {
-            background-color: #fff;
-            padding: 10px 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .navbar a {
-            float: right;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .navbar a.active {
-            color: orangered;
-        }
-        .navbar .logo {
-            float: left;
-            font-size: 18px;
-            color: #f2f2f2;
-            padding: 14px 16px;
-        }
-        .navbar.scrolled .logo, .navbar.scrolled a {
-            color: #333;
-        }
-        .hero {
-            position: relative;
-            text-align: center;
-            color: white;
-            margin-top: 60px; /* Adjusted for fixed navbar */
-        }
-        .hero img {
-            width: 100%;
-            height: auto;
-        }
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .hero-text h1 {
-            font-size: 50px;
-            margin: 0;
-        }
-        .hero-text p {
-            font-size: 20px;
-        }
-        .content {
-            padding: 20px;
-        }
-        .content h2 {
-            font-size: 24px;
-            margin-top: 0;
-        }
-        .content p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        @media (max-width: 768px) {
-            .navbar a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-            .hero-text h1 {
-                font-size: 30px;
-            }
-            .hero-text p {
-                font-size: 16px;
-            }
+            font-family: "Gabarito", sans-serif;
         }
     </style>
 </head>
-<body>
-    <div class="navbar" id="navbar">
-        <div class="logo">My Website</div>
-        <a href="#contact">Contact</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a class="active" href="#home">Home</a>
+
+<body class="text-gray-800 bg-amber-200">
+    <div class="flex justify-center items-center text-center bg-amber-300 p-2">
+        <img src="/LOGO.svg" alt="logo" height="150" width="150">
     </div>
-    <div class="hero">
-        <img src="/download (1).jpg" alt="A laptop and a tablet on a desk with an 'OPEN' sign in the background">
-        <div class="hero-text">
-            <h1>Welcome To My Website</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, consequuntur?</p>
+    <h2 class="flex justify-center items-center text-center p-8 text-lg font-semibold mb-4">Spelling Word<br>Game</h2>
+    <!-- Game Section -->
+
+    <div class="text-center my-8">
+        <div id="typedWord" class="text-lg font-semibold"></div>
+        <div class="inline-block bg-white p-4 rounded-lg shadow-md">
+            <div class="flex justify-center items-center mb-4">
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="bg-gray-200 p-4 rounded-full" onclick="addLetter('Y')">Y</button>
+                    <button class="bg-gray-200 p-4 rounded-full" onclick="addLetter('T')">T</button>
+                    <button class="bg-gray-200 p-4 rounded-full" onclick="addLetter('C')">C</button>
+                    <button class="bg-gray-200 p-4 rounded-full" onclick="addLetter('P')">P</button>
+                    <button class="bg-yellow-500 p-4 rounded-full" onclick="addLetter('O')">O</button>
+                    <button class="bg-gray-200 p-4 rounded-full" onclick="addLetter('E')">E</button>
+                    <button class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full"
+                    onclick="deleteLetter()">✘</button>
+                    <button class="bg-gray-200 p-4 rounded-full" onclick="addLetter('L')">L</button>
+                <button class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full ml-2"
+                    onclick="submitWord()">✔</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="content">
-        <h2>Content One</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore officia aperiam corporis similique. Facilis quos tempore labore totam! Consectetur molestiae iusto ducimus error reiciendis aspernatur dolor, modi dolorem sit architecto, voluptate magni sunt unde est quas? Voluptates a dolorum voluptatum quo perferendis aut sit. Aspernatur libero laboriosam ab eligendi omnis delectus earum labore, placeat officiis sint illum rem voluptas ipsum repellendus iste eius recusandae quae excepturi facere, iure rerum sequi? Illum velit delectus dicta et iste dolorum obcaecati minus odio eligendi!</p>
-        <h2>Content Two</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur provident nostrum possimus inventore nisi laboriosam consequatur modi nulla eos, commodi, omnis distinctio! Maxime distinctio impedit provident, voluptates illo odio nostrum minima beatae similique a sint sapiente voluptatum atque optio illum est! Tenetur tempora doloremque quae iste aperiam hic cumque repellat?</p>
-        <h2>Content Three</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur provident nostrum possimus inventore nisi laboriosam consequatur modi nulla eos, commodi, omnis distinctio! Maxime distinctio impedit provident, voluptates illo odio nostrum minima beatae similique a sint sapiente voluptatum atque optio illum est! Tenetur tempora doloremque quae iste aperiam hic cumque repellat?</p>
+    <!-- Download Section -->
+
+    <!-- Description Section -->
+    <div class="text-center my-8">
+        <div class="bg-yellow-500 text-white p-4 rounded-lg shadow-md">
+            <p class="text-lg font-semibold">Spelling Word game</p>
+            <p>Come join the fun and test your spelling skills with our daily Spelling word game. Words must contain at
+                least 4 letters and include the center letter. Each puzzle includes at least one "pangram" which uses
+                every letter at least once.</p>
+        </div>
     </div>
+    <!-- Other Games Section -->
+
+    <!-- How to Play Section -->
+    <div class="text-center my-8">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <p class="text-lg font-semibold mb-4">How to play Spelling Word game?</p>
+            <div class="flex flex-col md:flex-row items-center justify-center">
+                <div class="flex-1 p-4">
+                    <p class="text-gray-600 p-5">1. Make the first word</p>
+                    <img alt="Make the first word" class="mx-auto mb-4" height="200" src="/Screenshot 2025-04-11 214929.png"
+                        width="200" />
+                </div>
+                <div class="flex-1 p-4">
+                    <p class="text-gray-600 p-5">2. make sure the answer is correct</p>
+                    <img alt="Create a word list" class="mx-auto mb-4" height="200" src="/Screenshot 2025-04-11 215147.png"
+                        width="200" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQ Section -->
+    <div class="text-center my-8">
+        <div class="bg-amber-400 p-4 rounded-lg shadow-md">
+            <p class="text-lg font-semibold mb-4">Frequently Asked Questions</p>
+            <div class="text-left">
+                <div class="mb-4">
+                    <p class="font-semibold">What are the rules of the Spelling Word game?</p>
+                    <p class="text-gray-600">Basic rules of the game:</p>
+                    <ul class="list-disc list-inside text-gray-600">
+                        <li>Words must have at least four letters.</li>
+                        <li>Words must include the center letter.</li>
+                        <li>Letters can be used more than once.</li>
+                        <li>Words with hyphens, proper nouns, vulgarities, and especially obscure words are not in the
+                            word list.</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <p class="font-semibold">What are the best Spelling Word practice tips?</p>
+                    <ul class="list-disc list-inside text-gray-600">
+                        <li>Use the shuffle button. Shuffling the letters in the hive will help you see letter
+                            combinations and words that you may not see if they remain static.</li>
+                        <li>Remember that you can use letters in the same word more than once.</li>
+                        <li>Remember that you can use prefixes and suffixes to add length to the same word.</li>
+                        <li>Read a lot of books and expand your vocabulary. By reading books, you will learn more new
+                            words, as well as their spelling and meaning.</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <p class="font-semibold">Why do I see the "Invalid Word" message?</p>
+                    <p class="text-gray-600">This message means that the word was not found in our dictionary and no
+                        points are awarded for it. If you think the word is correct, please let us know.</p>
+                </div>
+                <div class="mb-4">
+                    <p class="font-semibold">How can I see the answers of today's game?</p>
+                    <p class="text-gray-600">You can find out all the correct answers of today's game by opening the
+                        next day (the "Yesterday" button in the upper left corner of the game interface).</p>
+                </div>
+                <div class="mb-4">
+                    <p class="font-semibold">At what time are the honeycomb letters updated?</p>
+                    <p class="text-gray-600">A new set of letters and words is updated every 24 hours at 12:00 in local
+                        time on your device.</p>
+                </div>
+                <div class="mb-4">
+                    <p class="font-semibold">Can I play Spelling word unlimited?</p>
+                    <p class="text-gray-600">If you need more practice, you can switch to unlimited mode and play as
+                        many games as you like.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Section -->
+    <div class="text-center my-8">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <p class="text-lg font-semibold mb-4">About Spelling Word</p>
+            <p class="text-gray-600 mb-4">The game presents players with a grid of 7 letters arranged in a honeycomb
+                structure. Players must form four or more letter words using given letters and must always include the
+                center letter. Each puzzle is guaranteed to have at least one pangram that, when found, gives the player
+                the most points. To win the game you need to collect the maximum number of points for a given set of
+                letters. Regular Spelling Bee games improve memory, mental clarity and slow down the aging of brain
+                cells.</p>
+            <img alt="" class="mx-auto mb-4" height="100" src="/LOGO.svg" width="100" />
+            <p class="text-gray-600 mb-4">Rate Spellingword.org</p>
+            <div class="flex justify-center items-center mb-4">
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-gray-300"></i>
+            </div>
+            <p class="text-gray-600">4 / 5</p>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <div class="text-center my-8">
+        <div class="bg-yellow-500 text-white p-4 rounded-lg shadow-md">
+            <p class="text-sm">© Spellingword.org 2013. All rights reserved.</p>
+            <p class="text-sm">Feedback | Privacy Policy</p>
+        </div>
+    </div>
+    </div>
+
     <script>
-        window.onscroll = function() {
-            var navbar = document.getElementById("navbar");
-            if (window.pageYOffset > 100) {
-                navbar.classList.add("scrolled");
+        let typedWord = '';
+
+        function addLetter(letter) {
+            typedWord += letter;
+            document.getElementById('typedWord').innerText = typedWord;
+        }
+
+        function deleteLetter() {
+            typedWord = typedWord.slice(0, -1);
+            document.getElementById('typedWord').innerText = typedWord;
+        }
+
+        function submitWord() {
+            if (typedWord.includes('O')) {
+                document.getElementById('typedWord').innerText = 'Correct: ' + typedWord;
             } else {
-                navbar.classList.remove("scrolled");
+                document.getElementById('typedWord').innerText = 'Incorrect: ' + typedWord;
             }
-        };
+            typedWord = '';
+        }
     </script>
 </body>
-</html>s
+
+</html>
